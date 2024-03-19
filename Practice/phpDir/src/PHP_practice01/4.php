@@ -17,13 +17,14 @@
 	<?php  
 
 /*  Step1: Define a function and make it return a calculation of 2 numbers
-
 	Step 2: Make a function that passes parameters and call it using parameter values
-
-
  */
-
-	
+    $sum1and2 = fn() => 1 + 2;
+	$sum = fn($a, $b) => $a + $b;
+		
+	echo $sum1and2();
+	echo "<br>";
+	echo $sum(1,5);
 ?>
 
 

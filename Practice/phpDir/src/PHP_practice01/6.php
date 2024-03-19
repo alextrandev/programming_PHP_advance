@@ -13,25 +13,16 @@
 
   <article class="main-content col-xs-8">
 
+
     <?php
 
+		/*  Step1: Make a form that submits one value to POST super global
+ */
 
 
-    /* 
-			 Step 1:  Use the Echo Function to say hello with html h1 tags embedded inside php
-
-		   Step 2: Write a comment above the echo function and explain
-		   what that function is doing.
-
-
-		   */
-
-    ?>
-
-
+		?>
 
 
   </article>
   <!--MAIN CONTENT-->
-
   <?php include "includes/footer.php"; ?>

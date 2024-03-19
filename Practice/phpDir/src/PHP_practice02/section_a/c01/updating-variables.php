@@ -2,8 +2,12 @@
 
 /* 
   Write you php code here
-
    */
+$candyName = "Chocolate";
+$candyPrice = 2;
+
+$candyName = "Chocolate bar";
+$candyPrice = 12;
 
 ?>
 <!DOCTYPE html>

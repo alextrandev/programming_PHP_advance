@@ -23,6 +23,7 @@
     /*
     Step 1:  Write "Hello PHP"
     */
+    echo("Hello PHP");
     ?>
     </body>
 
