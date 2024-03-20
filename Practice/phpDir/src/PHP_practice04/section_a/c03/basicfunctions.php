@@ -1,8 +1,12 @@
 <?php
+$candies = [
+  "toffee" => [3, 12],
+  "mints" => [2, 26],
+  "fudge" => [8, 8],
+];
 
-/**
- * Write your code here
- */
+$stockPrice = fn($price, $stock) => $price * $stock;
+$taxDue = fn($price, $stock) => $price * $stock * 0.2;
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,11 +27,15 @@
       <th>Total value</th>
       <th>Tax due</th>
     </tr>
-    <?php
-    /**
-     * Write your code here
-     */
-    ?>
+    <?php foreach ($candies as $candy => list($price, $stock)) { ?>
+      <tr>
+        <td><?=ucfirst($candy)?></td>
+        <td><?=$stock?></td>
+        <td><?=$stock < 10 ? "Yes" : "No"?></td>
+        <td><?=$stockPrice($price, $stock)?></td>
+        <td><?=$taxDue($price, $stock)?></td>
+      </tr>
+    <?php } ?>
   </table>
 </body>
 
