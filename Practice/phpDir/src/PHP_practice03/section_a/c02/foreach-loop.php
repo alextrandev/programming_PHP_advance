@@ -1,7 +1,10 @@
 <?php
-/* 
-    Write your code here
-     */
+$candies = [
+  "toffee" => 2.99,
+  "mints" => 1.99,
+  "fudge" => 3.49,
+  "chocolate" => 3.99
+];
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,11 +22,16 @@
       <th>Item</th>
       <th>Price</th>
     </tr>
-    <?php
-    /* 
-    Write your code here
-     */
-    ?>
+
+    <?php foreach ($candies as $candy => $price) { ?>
+
+      <tr>
+        <td><?=ucfirst($candy)?></td>
+        <td><?=$price?>€</td>
+      </tr>
+
+    <?php } ?>
+
   </table>
 </body>
 

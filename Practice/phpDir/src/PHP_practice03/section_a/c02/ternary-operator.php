@@ -1,5 +1,6 @@
 <?php
 /*Write your code here*/
+$stock = 3;
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,9 +13,7 @@
 <body>
   <h1>The Candy Store</h1>
   <h2>Chocolate</h2>
-  <?php
-  /* Write your code here */
-  ?>
+  <p><?=$stock ? "In stock" : "Sold out"?></p>
 </body>
 
 </html>

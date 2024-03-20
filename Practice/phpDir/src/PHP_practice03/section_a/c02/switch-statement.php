@@ -1,5 +1,15 @@
 <?php
-/* Write your code here */
+$day = "monday";
+switch($day) {
+  case "monday":
+    $deal = "20% off chocolates";
+    break;
+  case "tuesday":
+    $deal = "20% off mints";
+    break;
+  default:
+    $deal = "Buy three packs, get one free";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,9 +21,10 @@
 
 <body>
   <h1>The Candy Store</h1>
-  <?php
-  /* Write your code here */
-  ?>
+  <h2>Today deal:</h2>
+  <p>
+    <?php echo $deal; ?>
+</p>
 </body>
 
 </html>

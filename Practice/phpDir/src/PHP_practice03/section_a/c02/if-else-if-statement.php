@@ -1,5 +1,8 @@
 <?php
 /* Write your code here */
+$stock = 0;
+$status = "sold";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,9 +15,17 @@
 <body>
   <h1>The Candy Store</h1>
   <h2>Chocolate</h2>
-  <?php
-  /* Write your code here */
+  <p>
+    <?php
+  if ($stock > 0) {
+    echo "In stock";
+  } elseif ($stock == 0 && $status == "comming") {
+    echo "Comming soon!";
+  } else {
+    echo "Sold out!";
+  }
   ?>
+  </p>
 </body>
 
 </html>

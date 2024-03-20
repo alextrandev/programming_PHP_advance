@@ -1,5 +1,13 @@
 <?php
-/* Write your code here */
+$candyPrice = 1.99;
+$cart = 5;
+$total = 0;
+$i = 0;
+
+while ($i < $cart) {
+  $total += $candyPrice;
+  $i++;
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,12 +19,8 @@
 
 <body>
   <h1>The Candy Store</h1>
-  <h2>Prices for Multiple Packs</h2>
-  <p>
-    <?php
-    /* Write your code here */
-    ?>
-  </p>
+  <h2>Prices for <?=$cart?> pack(s)</h2>
+  <p><?=$total?>$</p>
 </body>
 
 </html>
