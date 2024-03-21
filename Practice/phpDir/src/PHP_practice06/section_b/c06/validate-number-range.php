@@ -21,6 +21,19 @@ Step 5: Check if condition is valid, if it is you can display
 ?>
 <?php include 'includes/header.php'; ?>
 
-//Write PHP Code here
+<?php if ($_SERVER["REQUEST_METHOD"] === "POST"): 
+        $age = $_POST["age"] ?? 0;
+        $message = ($age >= 16 && $age <= 65) ? "Age is valid" : "You must be 16-65 years old";
+?>
+        <p><?= $message ?></p>
+        
+<?php else: ?>
+
+        <form action="validate-number-range.php" method="POST">
+          <input type="text" name="age">
+          <input type="submit">
+        </form>
+
+<?php endif; ?>
 
 <?php include 'includes/footer.php'; ?>

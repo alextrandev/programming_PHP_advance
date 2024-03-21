@@ -19,5 +19,6 @@
 
 <h1>Page not found</h1>
 <p>Sorry, we could not find the page you were looking for.</p>
+<a onclick = "history.go(-1)">Go back</a>
 
 <?php include 'includes/footer.php' ?>

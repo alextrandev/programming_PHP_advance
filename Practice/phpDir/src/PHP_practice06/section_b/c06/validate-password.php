@@ -28,6 +28,38 @@ Step 7: Message can be for example "Password is valid" or if not string
 ?>
 <?php include 'includes/header.php'; ?>
 
-/* Write PHP code here */
+<?php if ($_SERVER["REQUEST_METHOD"] == "POST"):
+
+        $msg = "";
+        $pwd = $_POST["pwd"];
+
+        switch (false) {
+            case strlen($pwd) >= 8 :
+                $msg = "Password must be at least 8 characters";
+                break;
+            case preg_match("@[A-Z]@", $pwd):
+                $msg = "Password must contain uppercases";
+                break;
+            case preg_match("@[a-z]@", $pwd):
+                $msg = "Password must contain lowercases";
+                break;
+            case preg_match("@[1-9]@", $pwd):
+                $msg = "Password must contain a number";
+                break;
+            default:
+                $msg = "Password is valid";
+        } ?>
+
+        <p><?= $msg ?></p>
+        <button onclick="history.go(-1)">Go back</button>
+
+<?php else: ?>
+
+        <form action="validate-password.php" method="post">
+            <input type="text" name="pwd">
+            <input type="submit">
+        </form>
+
+<?php endif; ?>
 
 <?php include 'includes/footer.php'; ?>
