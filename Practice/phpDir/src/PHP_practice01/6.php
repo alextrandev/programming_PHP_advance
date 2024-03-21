@@ -15,13 +15,21 @@
 
 
     <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST"):
+  
+  if (isset($_POST["name"])) {
+    $name = $_POST["name"];
+    echo "<p>Welcome $name !</p>";
+  };
 
-		/*  Step1: Make a form that submits one value to POST super global
- */
+else: ?>
 
+  <form action="6.php" method="post">
+  <input type="text" name="name" id="#">
+  <input type="submit">
+  </form>
 
-		?>
-
+<?php endif;?>
 
   </article>
   <!--MAIN CONTENT-->

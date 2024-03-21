@@ -19,10 +19,13 @@ Step 4:  If the value in the city is a blank string it should display
 "Please select a city"
 
 */
+$cities = ["Helsinki", "Tokyo", "London"];
+$selectedCity = $_GET["city"] ?? "";
 
-?>
+foreach ($cities as $city): ?>
+<a href="get-2.php?city=<?=$city?>"><?=$city?></a>
+<?php endforeach; ?>
 
-
-//Write your code here
+<p><?=$selectedCity == "" ? "Please select a city" : $selectedCity?></p>
 
 <?php include 'includes/footer.php' ?>

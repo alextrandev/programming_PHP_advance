@@ -4,7 +4,6 @@
 /* Write PHP Code here  
 Overall idea here is to check if a form has been submitted
 
-
 Step 1: Use if statement to check $_SERVER superglobal array to see if the key called
 REQUEST_METHOD has a value of POST
 
@@ -13,10 +12,22 @@ and a message should be displayed like this:
   "You searched for ..."  (replace ... with term user searched for)
 
 Step 3: Otherwise, simply display the form
-
-
-
 */
+if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
+
+<p>You searched for: <b><?= $_POST["query"] ?></b></p>
+
+<?php
+else: 
+?>
+
+<form action="check-for-http-post.php" method="POST">
+  <input type="text" name="query" required>
+  <input type="submit">
+</form>
+
+<?php
+endif;
 ?>
 
 <?php include 'includes/footer.php'; ?>

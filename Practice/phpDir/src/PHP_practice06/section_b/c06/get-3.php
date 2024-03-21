@@ -6,7 +6,7 @@ It builds on top of previous ones and uses validation
 to check if the query string holds a valid location.
 
 Step 1: If the query string contains a city, it should be stored in some variable
- and if not, that variable should hold a blank string. 
+and if not, that variable should hold a blank string. 
 
 Step 2: Use array function e.g. array_key_exits() to check if the value in variable 
 is a key in the defined list of cities array. If it is, some variable should hold a 
@@ -17,9 +17,17 @@ and if any of the cities are valid, and if those cities are not defined, you can
 
 */
 
-?>
-<?php include 'includes/header.php' ?>
+$cities = ["Helsinki", "Tokyo", "London"];
+$selectedCity = $_GET["city"] ?? "";
 
-//Write your code here
+if (!in_array($selectedCity, $cities) && $selectedCity != "") {
+    header("Location: page-not-found.php");
+} else include 'includes/header.php';
+
+foreach ($cities as $city): ?>
+<a href="get-3.php?city=<?=$city?>"><?=$city?></a>
+<?php endforeach; ?>
+
+<p><?=$selectedCity == "" ? "Please select a city" : $selectedCity?></p>
 
 <?php include 'includes/footer.php' ?>
