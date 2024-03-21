@@ -22,11 +22,11 @@ for ($i = 0; $i < $candiesInPacks; $i++) {
 
 <?php
 
-for ($i = 0; $i < $displayIteration; $i++) { ?>
+for ($i = 0; $i < $displayIteration; $i++) : ?>
 
-<p>Price of <?=($i + 1)*10?> packs: <span><?=$packPrice * ($i + 1)?></span></p>
+<p>Price of <?=($i + 1) * 10?> packs: <span><?=$packPrice * ($i + 1)?></span></p>
 
-<?php } ?>
+<?php endfor; ?>
 </body>
 
 </html>

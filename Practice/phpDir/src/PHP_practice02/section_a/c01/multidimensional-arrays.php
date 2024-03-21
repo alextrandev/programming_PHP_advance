@@ -18,11 +18,16 @@ $offers =
 </head>
 
 <body>
+
   <h1>The Candy Store</h1>
   <h2>Offers</h2>
-  <?php
-  foreach($offers as $offer) echo "<p>".ucfirst($offer["name"]).": ".$offer["price"]."€. Stock: ".$offer['stock'].".</p>";
-  ?>
+
+  <?php foreach($offers as $offer): ?>
+
+     <p><?= ucfirst($offer["name"]) . ": " . $offer["price"] . "€. Stock: " . $offer['stock'] ?></p>
+     
+  <?php endforeach; ?>
+
 </body>
 
 </html>
