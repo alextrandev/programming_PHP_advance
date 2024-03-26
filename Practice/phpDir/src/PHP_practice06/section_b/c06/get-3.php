@@ -25,9 +25,11 @@ if (!in_array($selectedCity, $cities) && $selectedCity != "") {
 } else include 'includes/header.php';
 
 foreach ($cities as $city): ?>
-<a href="get-3.php?city=<?=$city?>"><?=$city?></a>
+
+<a href="get-3.php?city=<?= $city ?>"><?= $city ?></a>
+
 <?php endforeach; ?>
 
-<p><?=$selectedCity == "" ? "Please select a city" : $selectedCity?></p>
+<p><?= $selectedCity == "" ? "Please select a city" : $selectedCity ?></p>
 
 <?php include 'includes/footer.php' ?>

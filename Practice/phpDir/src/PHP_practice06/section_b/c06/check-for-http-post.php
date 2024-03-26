@@ -13,21 +13,18 @@ and a message should be displayed like this:
 
 Step 3: Otherwise, simply display the form
 */
-if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
+
+if ($_SERVER["REQUEST_METHOD"] === "POST"): ?>
 
 <p>You searched for: <b><?= $_POST["query"] ?></b></p>
 
-<?php
-else: 
-?>
+<?php else: ?>
 
 <form action="check-for-http-post.php" method="POST">
   <input type="text" name="query" required>
   <input type="submit">
 </form>
 
-<?php
-endif;
-?>
+<?php endif; ?>
 
 <?php include 'includes/footer.php'; ?>

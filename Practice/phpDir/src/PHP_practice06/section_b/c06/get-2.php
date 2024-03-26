@@ -17,7 +17,6 @@ that was named in the query string
 
 Step 4:  If the value in the city is a blank string it should display
 "Please select a city"
-
 */
 $cities = ["Helsinki", "Tokyo", "London"];
 $selectedCity = $_GET["city"] ?? "";
@@ -26,6 +25,16 @@ foreach ($cities as $city): ?>
 <a href="get-2.php?city=<?=$city?>"><?=$city?></a>
 <?php endforeach; ?>
 
-<p><?=$selectedCity == "" ? "Please select a city" : $selectedCity?></p>
+<p>
+    <?php 
+        if ($selectedCity == "") {
+            echo "Please select a city";
+        } elseif (!in_array($selectedCity, $cities)){
+            echo "City is not valid!";
+        } else {
+            echo $selectedCity;
+        } 
+    ?>
+</p>
 
 <?php include 'includes/footer.php' ?>

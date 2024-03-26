@@ -2,7 +2,7 @@
 LINK TO DEMONSTRATE XSS</a>
 
 <?php
-$message = $_GET['msg'] ?? 'Click link at top of page';
+$message = strip_tags(@$_GET['msg']) ?? 'Click link at top of page';
 ?>
 <?php include 'includes/header.php' ?>
 

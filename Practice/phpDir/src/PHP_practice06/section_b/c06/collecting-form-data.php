@@ -7,13 +7,13 @@
 //After fixing this form, simply run it few times to check how this works
 if ($_SERVER["REQUEST_METHOD"] == "POST"):
 
-  $name = $_POST["name"];
-  $age = $_POST["age"];
-  $email = $_POST["email"];
-  $password = $_POST["pwd"];
-  $bio = $_POST["bio"];
-  $preference = $_POST["preference"];
-  $rating = $_POST["rating"];
+  $name = strip_tags($_POST["name"]);
+  $age = strip_tags($_POST["age"]);
+  $email = strip_tags($_POST["email"]);
+  $password = strip_tags($_POST["pwd"]);
+  $bio = strip_tags($_POST["bio"]);
+  $preference = strip_tags($_POST["preference"]);
+  $rating = strip_tags($_POST["rating"]);
 
   echo <<<CONFIRM
   <pre>

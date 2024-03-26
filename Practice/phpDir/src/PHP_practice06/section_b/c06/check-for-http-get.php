@@ -15,11 +15,10 @@ If it is, the form should be then sent via HTTP GET and the search term is displ
 
 Step 3: Otherwise, simply display the form
 */
-?>
 
-<?php if (isset($_GET["query"])):
+if (isset($_GET["query"])):
+
   $query = $_GET["query"] ?? ""; ?>
-
   <p>You searched for: <b><?= $query ?></b></p>
 
 <?php else: ?>
