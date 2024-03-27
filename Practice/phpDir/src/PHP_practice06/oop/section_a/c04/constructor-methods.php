@@ -45,11 +45,22 @@ class Account {
     </tr>
     HTML;
   }
+
+  function updateBalance(string $keyword, float $amount) {
+    if ($keyword == "deposit") {
+      $this->balance += $amount;
+    } elseif ($keyword == "withdraw") {
+      $this->balance -= $amount;
+    }
+  }
 }
 
 $accounts[] = new Account(32002928172, "savings", 5123.06);
 $accounts[] = new Account(32001924827, "investing", 9992.01);
 $accounts[] = new Account(32003105818, "savings", 2232.12);
+
+$accounts[0]->updateBalance("deposit", 129.23);
+$accounts[2]->updateBalance("withdraw", 2102.20);
 
 include 'includes/header.php'; ?>
 
