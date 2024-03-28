@@ -6,10 +6,17 @@ $result = mysqli_query($conn, $query);
 
 if ($result) :
 
-    if (isset($_GET["id"])) { ?>
+    if (isset($_GET["id"])) {
+        $id = $_GET["id"] ?? 0;
+        $query = "DELETE FROM users WHERE id=$id";
+        $result = mysqli_query($conn, $query);
 
-
-    <?php } else { ?>
+        if ($result) : ?>
+            <h1>Account deleted</h1>
+        <?php else :
+            die("Query failed");
+        endif;
+    } else { ?>
         <table>
             <tr>
                 <th>ID</th>
@@ -37,3 +44,7 @@ else :
     die("Query insertation failed");
 
 endif; ?>
+
+<a href="login.php">
+    <button>Back to login page</button>
+</a>
