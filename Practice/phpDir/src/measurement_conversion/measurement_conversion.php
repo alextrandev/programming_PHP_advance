@@ -101,7 +101,7 @@ endif;
     <h1>Speed conversion</h1>
     <div class="form_container">
         <div class="input_container">
-            <input type="float" id="speed" name="speed" value="<?= @$_POST["speed"] ?>">
+            <input type="float" id="speed" name="speed" value="<?= @$_POST["speed"] ?>" required>
             <select name="speedUnit1" id="tempUnit1">
                 <option value="kph" <?= @$_POST["speedUnit1"] == "kph" ? "selected" : "" ?>>Kilometer per hour</option>
                 <option value="mps" <?= @$_POST["speedUnit1"] == "mps" ? "selected" : "" ?>>Meter per second</option>
@@ -122,14 +122,14 @@ endif;
             </select>
         </div>
     </div>
-    <input type="submit" value="Convert">
+    <input type="submit" value="Convert" class="button-54">
 </form>
 
 <form action="measurement_conversion.php" method="post">
     <h1>Mass conversion</h1>
     <div class="form_container">
         <div class="input_container">
-            <input type="float" id="mass" name="mass" value="<?= @$_POST["mass"] ?>">
+            <input type="float" id="mass" name="mass" value="<?= @$_POST["mass"] ?>" required>
             <select name="massUnit1" id="massUnit1">
                 <option value="kg" <?= @$_POST["massUnit1"] == "kg" ? "selected" : "" ?>>Kilogram</option>
                 <option value="g" <?= @$_POST["massUnit1"] == "g" ? "selected" : "" ?>>Gram</option>
@@ -148,14 +148,14 @@ endif;
             </select>
         </div>
     </div>
-    <input type="submit" value="Convert">
+    <input type="submit" value="Convert" class="button-54">
 </form>
 
 <form action="measurement_conversion.php" method="post">
     <h1>Temperature conversion</h1>
     <div class="form_container">
         <div class="input_container">
-            <input type="float" id="temp" name="temp" value="<?= @$_POST["temp"] ?>">
+            <input type="float" id="temp" name="temp" value="<?= @$_POST["temp"] ?>" required>
             <select name="tempUnit1" id="tempUnit1">
                 <option value="c" <?= @$_POST["tempUnit1"] == "c" ? "selected" : "" ?>>Celcius</option>
                 <option value="f" <?= @$_POST["tempUnit1"] == "f" ? "selected" : "" ?>>Farenheit</option>
@@ -172,5 +172,5 @@ endif;
             </select>
         </div>
     </div>
-    <input type="submit" value="Convert">
+    <input type="submit" value="Convert" class="button-54">
 </form>
