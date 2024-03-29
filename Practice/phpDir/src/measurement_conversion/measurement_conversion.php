@@ -16,13 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") :
 
         switch ($_POST["tempUnit2"]) {
             case "f":
-                $convertedTemp = $tempC * 9 / 5 + 32;
+                $convertedTemp = number_format($tempC * 9 / 5 + 32);
                 break;
             case "k":
-                $convertedTemp = $tempC + 273.15;
+                $convertedTemp = number_format($tempC + 273.15);
                 break;
             default:
-                $convertedTemp = $tempC;
+                $convertedTemp = number_format($tempC);
         } //converted mediator temp into the final result
     }
 
