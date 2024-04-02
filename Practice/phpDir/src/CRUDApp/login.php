@@ -27,11 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             default:
                 $error_msg = "";
                 //create the records in the database
-                $stmt->execute() ? header("Location: " . $_SERVER["PHP_SELF"]) : die("Query insertion failed");
+                if ($stmt->execute()) {
+                    header("Location: " . $_SERVER["PHP_SELF"]);
+                    exit();
+                } else die("Query insertion failed");
         }
-
-        // $stmt->close();
-        // $conn->close();
+        $stmt->close();
+        $conn->close();
     };
 };
 

@@ -1,9 +1,9 @@
 <?php
+include "db.php";
 $query = "SELECT * FROM users";
 $result = mysqli_query($conn, $query);
 
 if ($result) : ?>
-
     <table>
         <tr>
             <th>ID</th>
@@ -22,8 +22,11 @@ if ($result) : ?>
         <?php endwhile; ?>
 
     </table>
+<?php
 
-<?php else :
+    $conn->close();
+
+else :
 
     die("Query insertation failed");
 

@@ -5,7 +5,7 @@ $query = "SELECT * FROM users";
 $result = mysqli_query($conn, $query);
 
 if ($result) :
-
+    //execute the deletion if the form is sent, else send the form
     if (isset($_GET["id"])) {
         $id = $_GET["id"] ?? 0;
         $query = "DELETE FROM users WHERE id=$id";
@@ -43,7 +43,10 @@ else :
 
     die("Query insertation failed");
 
-endif; ?>
+endif;
+
+$conn->close();
+?>
 
 <a href="login.php">
     <button>Back to login page</button>

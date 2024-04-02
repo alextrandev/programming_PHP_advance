@@ -1,6 +1,6 @@
 <?php
-include "db.php";
 include "displayDB.php";
+include "db.php";
 
 $query = "SELECT * FROM users";
 $result = mysqli_query($conn, $query);
@@ -41,5 +41,10 @@ else : ?>
         </select>
         <input type="submit" name="submit" value="UPDATE">
     </form>
+    <a href="login.php">
+        <button>Back to login page</button>
+    </a>
 
 <?php endif;
+
+$conn->close();
