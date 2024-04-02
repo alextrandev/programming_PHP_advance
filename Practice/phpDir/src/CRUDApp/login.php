@@ -3,6 +3,8 @@
 //if form sent, send to database, else print the form
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["username"]) && isset($_POST["password"])) {
+        $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+        $stmt->bind_param("ss", $user, $pwd);
         $user = htmlspecialchars($_POST["username"]);
         $pwd = htmlspecialchars($_POST["password"]);
 
@@ -25,14 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             default:
                 $error_msg = "";
                 //create the records in the database
-                $query = "INSERT INTO users (username, password) VALUES ('$user', '$pwd')";
-                $result = mysqli_query($conn, $query);
-                if ($result) {
-                    echo "Account successfully created!";
-                } else {
-                    die("Query insertation failed");
-                }
+                $stmt->execute() ? header("Location: " . $_SERVER["PHP_SELF"]) : die("Query insertion failed");
         }
+
+        // $stmt->close();
+        // $conn->close();
     };
 };
 
