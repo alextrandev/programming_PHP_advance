@@ -1,5 +1,7 @@
 # A simple calculator with PHP
 
+[Link to site](http://alextrandev.infinityfreeapp.com/calculator/)
+
 ## Functions:
 
 - addition
