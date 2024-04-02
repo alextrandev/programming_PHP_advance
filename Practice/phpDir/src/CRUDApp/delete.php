@@ -1,52 +1,40 @@
-<?php
-include "db.php";
+<?php include "db.php";
+//execute the deletion if the form is sent, else send the form
+if (isset($_GET["id"])) :
+    $id = htmlspecialchars($_GET["id"]) ?? 0;
+    $query = "DELETE FROM users WHERE id=$id";
+    $result = mysqli_query($conn, $query);
 
-$query = "SELECT * FROM users";
-$result = mysqli_query($conn, $query);
+    if ($result) {
+        header("Location: " . $_SERVER["PHP_SELF"]);
+        exit();
+    } else die("Query insertion failed");
 
-if ($result) :
-    //execute the deletion if the form is sent, else send the form
-    if (isset($_GET["id"])) {
-        $id = $_GET["id"] ?? 0;
-        $query = "DELETE FROM users WHERE id=$id";
+else : ?>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th></th>
+        </tr>
+        <?php
+        $query = "SELECT * FROM users";
         $result = mysqli_query($conn, $query);
 
-        if ($result) : ?>
-            <h1>Account deleted</h1>
-        <?php else :
-            die("Query failed");
-        endif;
-    } else { ?>
-        <table>
+        while ($rows = mysqli_fetch_assoc($result)) : ?>
             <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th></th>
+                <?php foreach ($rows as $row) : ?>
+                    <td><?= $row ?></td>
+                <?php endforeach; ?>
+                <td><a href="delete.php?id=<?= $rows["id"] ?>"><button>DELETE</button></a></td>
             </tr>
-
-            <?php while ($rows = mysqli_fetch_assoc($result)) : ?>
-
-                <tr>
-                    <?php foreach ($rows as $row) : ?>
-                        <td><?= $row ?></td>
-                    <?php endforeach; ?>
-                    <td><a href="delete.php?id=<?= $rows["id"] ?>"><button>DELETE</button></a></td>
-                </tr>
-
-            <?php endwhile; ?>
-
-        </table>
-<?php };
-
-else :
-
-    die("Query insertation failed");
+        <?php endwhile; ?>
+    </table>
+<?php
 
 endif;
-
-$conn->close();
-?>
+$conn->close(); ?>
 
 <a href="login.php">
     <button>Back to login page</button>

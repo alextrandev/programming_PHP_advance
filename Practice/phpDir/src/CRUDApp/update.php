@@ -19,16 +19,15 @@
     <label for="password"> Password </label>
     <input type="password" name="password" required><br>
     <select name="id" id="" required>
-        <?php
-        include "db.php";
+        <?php include "db.php";
         $query = "SELECT * FROM users";
         $result = mysqli_query($conn, $query);
-        while ($rows = mysqli_fetch_assoc($result)) {
-            $id = $rows['id'];
-            echo "<option value='$id'>$id</option>";
-        };
-        $conn->close();
-        ?>
+
+        while ($rows = mysqli_fetch_assoc($result)) : ?>
+            <option value='<?= $rows['id'] ?>'>$id</option>
+        <?php endwhile;
+
+        $conn->close(); ?>
     </select>
     <input type="submit" name="submit" value="UPDATE">
     <p><?= @$error_msg ?></p>
