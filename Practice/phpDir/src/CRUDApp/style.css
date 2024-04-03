@@ -52,6 +52,11 @@ label {
     vertical-align: middle;
 }
 
+.password_td.hidden {
+    -moz-text-security: disc !important;
+    -webkit-text-security: disc !important;
+}
+
 /* table */
 table {
     border-collapse: collapse;

@@ -37,4 +37,5 @@ if (isset($_COOKIE["message"])) : ?>
 
 <script src="toast.js"></script>
 <script src="toggle_password.js"></script>
+<script src="https://kit.fontawesome.com/ec91d642f0.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="style.css">
