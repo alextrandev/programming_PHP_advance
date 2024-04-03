@@ -18,9 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <h1>ADMIN PANEL</h1>
 <form action="index.php" method="post">
     <label for="username">Username</label>
-    <input type="text" name="username" required value="<?= @$user ?>"><br>
+    <input type="text" name="username" id="username" required value="<?= @$user ?>">
     <label for="password" name="password">Password</label>
-    <input type="password" name="password" required><br>
+    <input type="password" name="password" id="password" required>
+    <input type="checkbox" id="show_password">
+    <label for="show_password">Show password</label>
     <input class="button" type="submit" name="submit" value="Register">
     <p class="error_msg"><?= @$error_msg ?></p>
 </form>
@@ -34,4 +36,5 @@ if (isset($_COOKIE["message"])) : ?>
 <?php endif; ?>
 
 <script src="toast.js"></script>
+<script src="toggle_password.js"></script>
 <link rel="stylesheet" href="style.css">

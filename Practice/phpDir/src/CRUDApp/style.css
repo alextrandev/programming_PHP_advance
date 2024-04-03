@@ -44,6 +44,12 @@ input[type=button] {
 
 input[type=submit] {
     width: 100%;
+    margin-top: 0.5rem;
+}
+
+input[type="checkbox"],
+label {
+    vertical-align: middle;
 }
 
 /* table */
