@@ -6,13 +6,13 @@
     $result = mysqli_query($conn, $query);
 
     if ($result) {
-        header("Location: login.php");
+        header("Location: index.php");
         exit();
     } else die("Query insertion failed");
 
 else :
 
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 
 endif;

@@ -40,11 +40,11 @@ if (isset($_GET["id"])) :
         <p><?= @$error_msg ?></p>
     </form>
 
-    <a href="login.php">
-        <button>Back to login page</button>
+    <a href="index.php">
+        <button>Back to index page</button>
     </a>
 <?php
 
-else : header("Location: login.php");
+else : header("Location: index.php");
 
 endif;

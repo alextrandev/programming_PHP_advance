@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     };
 } ?>
 
-<form action="login.php" method="post">
+<form action="index.php" method="post">
     <label for="username">Username</label>
     <input type="text" name="username" required value="<?= @$user ?>"><br>
     <label for="password" name="password">Password</label>
