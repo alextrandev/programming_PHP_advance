@@ -3,15 +3,15 @@ if (isset($_GET["id"])) :
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         include "db.php";
 
-        $stmt = $conn->prepare("UPDATE users SET username=?, password=? WHERE id=?");
-        $stmt->bind_param("ssi", $user, $pwd, $id);
+        $updateStmt = $conn->prepare("UPDATE users SET username=?, password=? WHERE id=?");
+        $updateStmt->bind_param("ssi", $user, $pwd, $id);
         $user = htmlspecialchars($_POST["username"]);
         $pwd = htmlspecialchars($_POST["password"]);
         $id = htmlspecialchars($_POST["id"]);
 
         include "input_check.php";
 
-        $stmt->close();
+        $updateStmt->close();
         $conn->close();
     }
 
@@ -38,7 +38,7 @@ if (isset($_GET["id"])) :
         <label for="id">User ID</label>
         <input type="number" name="id" value="<?= $user["id"] ?>" readonly><br>
         <input class="button" type="submit" name="submit" value="UPDATE">
-        <p><?= @$error_msg ?></p>
+        <p class="error_msg"><?= @$error_msg ?></p>
         <input type="button" onclick="history.go(-1)" value="Back to index page">
     </form>
 <?php

@@ -3,29 +3,35 @@
 //if form sent, send to database, else print the form
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["username"]) && isset($_POST["password"])) {
-        $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-        $stmt->bind_param("ss", $user, $pwd);
+        $insertStmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+        $insertStmt->bind_param("ss", $user, $pwd);
         $user = htmlspecialchars($_POST["username"]);
         $pwd = htmlspecialchars($_POST["password"]);
 
         include "input_check.php";
 
-        $stmt->close();
+        $insertStmt->close();
         $conn->close();
     };
 } ?>
 
-<h1>Admin panel</h1>
+<h1>ADMIN PANEL</h1>
 <form action="index.php" method="post">
     <label for="username">Username</label>
     <input type="text" name="username" required value="<?= @$user ?>"><br>
     <label for="password" name="password">Password</label>
     <input type="password" name="password" required><br>
     <input class="button" type="submit" name="submit" value="Register">
-    <p><?= @$error_msg ?></p>
+    <p class="error_msg"><?= @$error_msg ?></p>
 </form>
 
 <?php
 
-include "displayDB.php"; ?>
+include "displayDB.php";
+
+if (isset($_COOKIE["message"])) : ?>
+    <div id="toast"><?= $_COOKIE["message"] ?></div>
+<?php endif; ?>
+
+<script src="toast.js"></script>
 <link rel="stylesheet" href="style.css">

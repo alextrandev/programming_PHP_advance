@@ -15,10 +15,18 @@
         $error_msg = "Password must contain a number";
         break;
     default:
-        $error_msg = "";
         //create the records in the database
-        if ($stmt->execute()) {
-            header("Location: " . $_SERVER["PHP_SELF"]);
-            exit();
-        } else die("Query insertion failed");
+        if (isset($insertStmt)) {
+            $insertStmt->execute()
+                ? setcookie("message", "Successfully registered", time() + 10)
+                : setcookie("message", "Failed to register, try again!", time() + 10);
+        } elseif (isset($updateStmt)) {
+            $updateStmt->execute()
+                ? setcookie("message", "Successfully updated", time() + 10)
+                :   setcookie("message", "Failed to register, try again!", time() + 10);
+        }
+        header("Location: index.php");
+        exit();
 }
+
+setcookie("message", $error_msg, time() + 10);

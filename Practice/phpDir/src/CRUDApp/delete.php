@@ -1,7 +1,6 @@
 <?php if (isset($_GET["id"]) && !isset($_GET["confirm"])) :
 
     include "db.php";
-
     $id = htmlspecialchars($_GET["id"]);
     $query = "SELECT * FROM users WHERE id=$id";
     $result = mysqli_query($conn, $query);
@@ -28,6 +27,7 @@ elseif (isset($_GET["confirm"])) :
     $result = mysqli_query($conn, $query);
 
     if ($result) {
+        setcookie("message", "Account successfully deleted", time() + 10);
         header("Location: index.php");
         exit();
     } else die("Query insertion failed");
