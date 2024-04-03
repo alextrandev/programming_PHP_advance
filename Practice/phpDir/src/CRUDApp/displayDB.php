@@ -17,8 +17,8 @@ if ($result) : ?>
                     <td><?= $row ?></td>
                 <?php endforeach; ?>
                 <td>
-                    <button onclick="window.location.href='delete.php?id=<?= $rows['id'] ?>'">Delete</button>
-                    <button onclick="window.location.href='update.php?id=<?= $rows['id'] ?>'">Update</button>
+                    <button class="button" onclick="window.location.href='delete.php?id=<?= $rows['id'] ?>'">Delete</button>
+                    <button class="button" onclick="window.location.href='update.php?id=<?= $rows['id'] ?>'">Update</button>
                 </td>
             </tr>
             </tr>

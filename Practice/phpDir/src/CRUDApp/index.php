@@ -15,15 +15,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     };
 } ?>
 
+<h1>Admin panel</h1>
 <form action="index.php" method="post">
     <label for="username">Username</label>
     <input type="text" name="username" required value="<?= @$user ?>"><br>
     <label for="password" name="password">Password</label>
     <input type="password" name="password" required><br>
-    <input type="submit" name="submit" value="Submit">
+    <input class="button" type="submit" name="submit" value="Register">
     <p><?= @$error_msg ?></p>
 </form>
 
 <?php
 
 include "displayDB.php"; ?>
+<link rel="stylesheet" href="style.css">

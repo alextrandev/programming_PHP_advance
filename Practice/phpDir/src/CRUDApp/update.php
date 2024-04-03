@@ -29,6 +29,7 @@ if (isset($_GET["id"])) :
 
     $conn->close(); ?>
 
+    <h1>Update user <?= $user["id"] . ": " . $user["username"]  ?></h1>
     <form action="update.php?id=<?= $user["id"] ?>" method="post">
         <label for="username"> Username </label>
         <input type="text" name="username" value="<?= $user["username"] ?>" required><br>
@@ -36,15 +37,13 @@ if (isset($_GET["id"])) :
         <input type="password" name="password" value="<?= $user["password"] ?>" required><br>
         <label for="id">User ID</label>
         <input type="number" name="id" value="<?= $user["id"] ?>" readonly><br>
-        <input type="submit" name="submit" value="UPDATE">
+        <input class="button" type="submit" name="submit" value="UPDATE">
         <p><?= @$error_msg ?></p>
+        <input type="button" onclick="history.go(-1)" value="Back to index page">
     </form>
-
-    <a href="index.php">
-        <button>Back to index page</button>
-    </a>
 <?php
 
 else : header("Location: index.php");
+endif; ?>
 
-endif;
+<link rel="stylesheet" href="style.css">
