@@ -50,6 +50,14 @@ input[type=submit] {
 input[type="checkbox"],
 label {
     vertical-align: middle;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+label,
+#eye_icon,
+input[type="button"] {
+    cursor: pointer;
 }
 
 .password_td.hidden {
