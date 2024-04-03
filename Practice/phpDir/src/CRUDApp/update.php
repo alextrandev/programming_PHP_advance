@@ -1,40 +1,50 @@
-<?php if ($_SERVER["REQUEST_METHOD"] === "POST") {
+<?php
+if (isset($_GET["id"])) :
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        include "db.php";
+
+        $stmt = $conn->prepare("UPDATE users SET username=?, password=? WHERE id=?");
+        $stmt->bind_param("ssi", $user, $pwd, $id);
+        $user = htmlspecialchars($_POST["username"]);
+        $pwd = htmlspecialchars($_POST["password"]);
+        $id = htmlspecialchars($_POST["id"]);
+
+        include "input_check.php";
+
+        $stmt->close();
+        $conn->close();
+    }
+
     include "db.php";
 
-    $stmt = $conn->prepare("UPDATE users SET username=?, password=? WHERE id=?");
-    $stmt->bind_param("ssi", $user, $pwd, $id);
-    $user = htmlspecialchars($_POST["username"]);
-    $pwd = htmlspecialchars($_POST["password"]);
-    $id = htmlspecialchars($_POST["id"]);
+    $id = htmlspecialchars($_GET["id"]);
+    $query = "SELECT * FROM users";
+    $result = mysqli_query($conn, $query);
 
-    include "input_check.php";
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row["id"] == $_GET["id"]) {
+            $user = $row;
+        }
+    }
 
-    $stmt->close();
-    $conn->close();
-} ?>
+    $conn->close(); ?>
 
-<form action="update.php" method="post">
-    <label for="username"> Username </label>
-    <input type="text" name="username" required><br>
-    <label for="password"> Password </label>
-    <input type="password" name="password" required><br>
-    <select name="id" id="" required>
-        <?php include "db.php";
-        $query = "SELECT * FROM users";
-        $result = mysqli_query($conn, $query);
+    <form action="update.php?id=<?= $user["id"] ?>" method="post">
+        <label for="username"> Username </label>
+        <input type="text" name="username" value="<?= $user["username"] ?>" required><br>
+        <label for="password"> Password </label>
+        <input type="password" name="password" value="<?= $user["password"] ?>" required><br>
+        <label for="id">User ID</label>
+        <input type="number" name="id" value="<?= $user["id"] ?>" readonly><br>
+        <input type="submit" name="submit" value="UPDATE">
+        <p><?= @$error_msg ?></p>
+    </form>
 
-        while ($rows = mysqli_fetch_assoc($result)) : ?>
-            <option value='<?= $rows['id'] ?>'>$id</option>
-        <?php endwhile;
+    <a href="login.php">
+        <button>Back to login page</button>
+    </a>
+<?php
 
-        $conn->close(); ?>
-    </select>
-    <input type="submit" name="submit" value="UPDATE">
-    <p><?= @$error_msg ?></p>
-</form>
+else : header("Location: login.php");
 
-<?php include "displayDB.php"; ?>
-
-<a href="login.php">
-    <button>Back to login page</button>
-</a>
+endif;

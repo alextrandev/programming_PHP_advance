@@ -27,10 +27,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <?php
 
 include "displayDB.php"; ?>
-
-<a href="update.php">
-    <button>Update database</button>
-</a>
-<a href="delete.php">
-    <button>Delete user</button>
-</a>

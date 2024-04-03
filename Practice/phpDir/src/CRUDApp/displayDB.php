@@ -8,6 +8,7 @@ if ($result) : ?>
             <th>ID</th>
             <th>Username</th>
             <th>Password</th>
+            <th>Modify</th>
         </tr>
 
         <?php while ($rows = mysqli_fetch_assoc($result)) : ?>
@@ -15,6 +16,11 @@ if ($result) : ?>
                 <?php foreach ($rows as $row) : ?>
                     <td><?= $row ?></td>
                 <?php endforeach; ?>
+                <td>
+                    <button onclick="window.location.href='delete.php?id=<?= $rows['id'] ?>'">Delete</button>
+                    <button onclick="window.location.href='update.php?id=<?= $rows['id'] ?>'">Update</button>
+                </td>
+            </tr>
             </tr>
         <?php endwhile; ?>
     </table>
