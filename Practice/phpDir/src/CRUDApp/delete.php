@@ -8,12 +8,14 @@
 ?>
     <h1>Delete user <?= $user["id"] . ": " . $user["username"]  ?></h1>
     <form action="delete.php?id=<?= $user["id"] ?>&confirm=1" method="post">
-        <label for="username"> Username </label>
-        <input type="text" name="username" value="<?= $user["username"] ?>" readonly><br>
-        <label for="password"> Password </label>
-        <input type="password" name="password" value="<?= $user["password"] ?>" readonly><br>
         <label for="id">User ID</label>
-        <input type="number" name="id" value="<?= $user["id"] ?>" readonly><br>
+        <input type="number" name="id" id="id" value="<?= $user["id"] ?>" readonly>
+        <label for="username"> Username </label>
+        <input type="text" name="username" id="username" value="<?= $user["username"] ?>" readonly>
+        <label for="password"> Password </label>
+        <input type="password" name="password" id="password" value="<?= $user["password"] ?>" readonly>
+        <input type="checkbox" id="show_password">
+        <label for="show_password">Show password</label>
         <input onclick="location.href='delete.php?id=<?= $user['id'] ?>&confirm=1'" class=" button" type="submit" value="DELETE">
         <input type="button" onclick="history.go(-1)" value="Back to index page">
     </form>
@@ -43,3 +45,4 @@ $conn->close();
 ?>
 
 <link rel="stylesheet" href="style.css">
+<script src="toggle_password.js"></script>

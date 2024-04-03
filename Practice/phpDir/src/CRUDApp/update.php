@@ -31,12 +31,14 @@ if (isset($_GET["id"])) :
 
     <h1>Update user <?= $user["id"] . ": " . $user["username"]  ?></h1>
     <form action="update.php?id=<?= $user["id"] ?>" method="post">
-        <label for="username"> Username </label>
-        <input type="text" name="username" value="<?= $user["username"] ?>" required><br>
-        <label for="password"> Password </label>
-        <input type="password" name="password" value="<?= $user["password"] ?>" required><br>
         <label for="id">User ID</label>
-        <input type="number" name="id" value="<?= $user["id"] ?>" readonly><br>
+        <input type="number" name="id" value="<?= $user["id"] ?>" readonly>
+        <label for="username"> Username </label>
+        <input type="text" name="username" id="username" value="<?= $user["username"] ?>" required>
+        <label for="password"> Password </label>
+        <input type="password" name="password" id="password" value="<?= $user["password"] ?>" required>
+        <input type="checkbox" id="show_password">
+        <label for="show_password">Show password</label>
         <input class="button" type="submit" name="submit" value="UPDATE">
         <p class="error_msg"><?= @$error_msg ?></p>
         <input type="button" onclick="history.go(-1)" value="Back to index page">
@@ -47,3 +49,4 @@ else : header("Location: index.php");
 endif; ?>
 
 <link rel="stylesheet" href="style.css">
+<script src="toggle_password.js"></script>
