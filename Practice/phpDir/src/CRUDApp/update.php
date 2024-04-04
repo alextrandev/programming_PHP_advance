@@ -16,17 +16,10 @@ if (isset($_GET["id"])) :
     }
 
     include "db.php";
-
     $id = htmlspecialchars($_GET["id"]);
-    $query = "SELECT * FROM users";
+    $query = "SELECT * FROM users WHERE id=$id";
     $result = mysqli_query($conn, $query);
-
-    while ($row = mysqli_fetch_assoc($result)) {
-        if ($row["id"] == $_GET["id"]) {
-            $user = $row;
-        }
-    }
-
+    $user = mysqli_fetch_assoc($result);
     $conn->close(); ?>
 
     <h1>Update user <?= $user["id"] . ": " . $user["username"]  ?></h1>
@@ -41,7 +34,7 @@ if (isset($_GET["id"])) :
         <label for="show_password">Show password</label>
         <input class="button" type="submit" name="submit" value="UPDATE">
         <p class="error_msg"><?= @$error_msg ?></p>
-        <input type="button" onclick="history.go(-1)" value="Back to index page">
+        <input type="button" onclick="location.href='index.php'" value="Back to index page">
     </form>
 <?php
 
