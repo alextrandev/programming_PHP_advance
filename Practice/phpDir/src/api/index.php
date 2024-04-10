@@ -7,17 +7,17 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
 
 $objectDB = new DBConnect();
-$connection = $objectDB->connect();
-// var_dump($connection);
+$conn = $objectDB->connect();
+// var_dump($conn);
 
 // print_r(file_get_contents('php://input'));
 
 $method = $_SERVER['REQUEST_METHOD'];
-switch ($method) {
+switch ($method):
     case "POST":
         $user = json_decode(file_get_contents('php://input'));
         $sql = "INSERT INTO users(name, email, phone, created_at, updated_at) VALUES(?,?,?,?,?)";
-        $stmt = $connection->prepare($sql);
+        $stmt = $conn->prepare($sql);
         $paramArr = array($user->name, $user->email, $user->phone, date('Y-m-d'), date('Y-m-d'));
 
         foreach ($paramArr as $key => $val) {
@@ -32,4 +32,13 @@ switch ($method) {
 
         echo json_encode($res);
         break;
-}
+
+    case "GET":
+        $sql = "SELECT * from users";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        echo json_encode($users);
+        break;
+endswitch;
