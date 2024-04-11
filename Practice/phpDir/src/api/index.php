@@ -18,13 +18,19 @@ switch ($method):
         $user = json_decode(file_get_contents('php://input'));
         $sql = "INSERT INTO users(name, email, phone, created_at, updated_at) VALUES(?,?,?,?,?)";
         $stmt = $conn->prepare($sql);
-        $paramArr = array($user->name, $user->email, $user->phone, date('Y-m-d'), date('Y-m-d'));
+        // $paramArr = array($user->name, $user->email, $user->phone, date('Y-m-d'), date('Y-m-d'));
 
-        foreach ($paramArr as $key => $val) {
-            $stmt->bindParam($key + 1, $paramArr[$key]);
-        }
+        // foreach ($paramArr as $key => $val) {
+        //     $stmt->bindParam($key + 1, $paramArr[$key]);
+        // }
 
-        if ($stmt->execute()) {
+        // if ($stmt->execute()) {
+        //     $res = ['status' => 1, 'message' => 'Record created successfully'];
+        // } else {
+        //     $res = ['status' => 0, 'message' => 'Failed to create a record'];
+        // }
+
+        if ($stmt->execute([$user->name, $user->email, $user->phone, date('Y-m-d'), date('Y-m-d')])) {
             $res = ['status' => 1, 'message' => 'Record created successfully'];
         } else {
             $res = ['status' => 0, 'message' => 'Failed to create a record'];
